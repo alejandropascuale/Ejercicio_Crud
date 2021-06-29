@@ -40,7 +40,14 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		// Do the magic
+		const id = req.params.id;
+		const product = products.find((prod) => prod.id == id);
+
+		const viewData = {
+			product,
+		}
+
+		res.render('product-edit-form', viewData)
 	},
 	// Update - Method to update
 	update: (req, res) => {
