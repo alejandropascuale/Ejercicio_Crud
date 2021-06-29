@@ -10,7 +10,7 @@ const controller = {
 	// Root - Show all products
 	index: (req, res) => {
 		const allProducts = products.filter (p => p.id != 0);
-		viewProducts = {
+		const viewProducts = {
 			viewProduct: allProducts
 		}
 		res.render ('products', viewProducts);
@@ -18,7 +18,14 @@ const controller = {
 
 	// Detail - Detail from one product
 	detail: (req, res) => {
-		// Do the magic
+		const id = req.params.id;
+		const product = products.find((prod) => prod.id == id);
+
+		const viewData = {
+			product,
+		}
+
+		res.render('detail', viewData)
 	},
 
 	// Create - Form to create
