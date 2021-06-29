@@ -30,7 +30,14 @@ const controller = {
 
 	// Create - Form to create
 	create: (req, res) => {
-		// Do the magic
+		const id = req.params.id;
+		const product = products.find((prod) => prod.id == id);
+
+		const viewData = {
+			product,
+		}
+
+		res.render('product-create-form', viewData)
 	},
 	
 	// Create -  Method to store
